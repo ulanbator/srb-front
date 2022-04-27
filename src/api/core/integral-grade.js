@@ -15,4 +15,12 @@ export default {
       method: 'delete',
     })
   },
+
+  save(integralGrade) {
+    return request({
+      url: `/admin/core/integralGrade/save`,
+      method: 'post',
+      data: integralGrade,
+    })
+  },
 }
