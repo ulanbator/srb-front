@@ -7,6 +7,14 @@
       <el-table-column prop="integralEnd" label="积分区间结束" />
       <el-table-column label="操作" width="200" align="center">
         <template slot-scope="scope">
+          <router-link
+            :to="'/core/integral-grade/edit/' + scope.row.id"
+            style="margin-right: 5px"
+          >
+            <el-button type="primary" size="mini" icon="el-icon-edit">
+              修改
+            </el-button>
+          </router-link>
           <el-button
             type="danger"
             size="mini"

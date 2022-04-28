@@ -34,12 +34,31 @@ export default {
     }
   },
 
+  created() {
+    //当路由中存在id属性的时候，就是回显表单，需要调用回显数据的接口
+    if (this.$route.params.id) {
+      this.fetchById(this.$route.params.id)
+    }
+  },
+
   // 定义方法
   methods: {
+    fetchById(id) {
+      integralGradeApi.getById(id).then((response) => {
+        this.integralGrade = response.data.data
+      })
+    },
     saveOrUpdate() {
       // 禁用保存按钮
       this.saveBtnDisabled = true
       this.saveData()
+
+      if (!this.integralGrade.id) {
+        //调用新增
+        this.saveData()
+      } else {
+        this.updateData()
+      }
     },
 
     // 新增数据
